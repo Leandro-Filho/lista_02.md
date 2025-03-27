@@ -1,25 +1,28 @@
+function somarMatrizesInvestimento(matrizA, matrizB) {
+    // Verifica se as matrizes têm o mesmo número de linhas e colunas
+    if (matrizA.length !== matrizB.length || matrizA[0].length !== matrizB[0].length) {
+        return "As matrizes não podem ser somadas. Elas têm dimensões diferentes.";
+    }
 
-function mostrarFrete(valorPedido){
+    let linhas = matrizA.length;
+    let colunas = matrizA[0].length;
+    let matrizResultado = new Array(linhas).fill().map(() => new Array(colunas).fill(0));
 
-    valorPedido = valorPedido.toFixed(2)//garantir 2 casas decimais
- 
-    //conferir se o valorPedido será menor que 50 reais, se for verdadeiro retornará o seu return
-     if(valorPedido < 50.00 && valorPedido >= 0){ 
-         return `O preço final ficou R$ ${valorPedido}, então voce não tem frete disponível meu chapa!`
-     }
-     //conferir se o valorPedido será menor que 199,99 reais e maior ou igual a 50.00, se for verdadeiro retornará o seu return
-     else if(valorPedido >= 50.00 && valorPedido <= 199.99){
-         return `O preço final ficou R$ ${valorPedido}, então voce tem frete com custo adicional! O bolso vai doer um pouco.`
-     }
-     //conferir se o valorPedido será maior ou iagual que 200.00 reais, se for verdadeiro retornará o seu return
-     else if(valorPedido >= 200.00){
-         return `O preço final ficou R$ ${valorPedido}, então voce tem frete grátis! Bem demais irmãozinho.`
-     }
-     
-     
- }
- //testar o código
- console.log(mostrarFrete(200.00));
- console.log(mostrarFrete(74));
- console.log(mostrarFrete(199));
- console.log(mostrarFrete(0));
+    // Loop para percorrer cada elemento das matrizes e calcular a soma
+    for (let i = 0; i < linhas; i++) {
+        for (let j = 0; j < colunas; j++) {
+            matrizResultado[i][j] = matrizA[i][j] + matrizB[i][j];
+        }
+    }
+
+    return matrizResultado;
+}
+
+// Exemplo de uso da função
+let investimentosAno1 = [[1000, 2000], [1500, 2500]];
+let investimentosAno2 = [[1200, 1800], [1300, 2700]];
+
+let totalInvestimentos = somarMatrizesInvestimento(investimentosAno1, investimentosAno2);
+
+console.log("Total de investimentos acumulados:");
+console.log(totalInvestimentos);

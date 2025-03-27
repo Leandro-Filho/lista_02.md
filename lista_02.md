@@ -323,6 +323,102 @@ Método CalcularConsumo():
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
 ______
+```javascript
+//pseudocódigo do problema acima
+CLASSE Veículo:
+    ATRIBUTOS:
+        modelo
+        ano
+
+    MÉTODO consumoCombustivel():
+        km_L É IAGUAL A kmRodados DIVIDIDO POR litro
+        ESCREVER "Seu", nome, modelo, "ano", ano, "fez", km_L, "Km/L na cidade."
+
+CLASSE Carro HERDA Veículo:
+    ATRIBUTOS:
+        nome
+        litro
+        kmRodados
+        eficiencia
+
+    MÉTODO consumoCombustivelCarro():
+        km_Litros É IGUAL A (kmRodados DIVIDIDO POR litro) MULTIPLICADO POR eficiencia
+        ESCREVER "Seu", nome, modelo, "ano", ano, "fez", km_Litros, "Km/L na cidade."
+
+CLASSE Moto HERDA Veículo:
+    ATRIBUTOS:
+        nome
+        litro
+        kmRodados
+        eficiencia
+
+    MÉTODO consumoCombustivelMoto():
+        km_Litros É IGUAL A (kmRodados DIVIDIDO POR litro) MULTIPLICADO POR eficiencia
+        ESCREVER "Seu", nome, modelo, "ano", ano, "fez", km_Litros, "Km/L na cidade."
+
+// Criar instância de Carro
+VAR carrinho É IGUAL A NOVO Carro("Wolkswagen", "Polo", 52, "2023", 790, 0.65)
+CHAMAR carrinho.consumoCombustivelCarro()
+
+ESCREVER "-------------------------------------------------------"
+
+// Criar instância de Moto
+VAR motinha É IGUAL A NOVO Moto("Ducati", "Veron", 15, "2024", 200, 0.60)
+CHAMAR motinha.consumoCombustivelMoto()
+
+```
+
+
+```javascript
+//código do tal exercicio
+class Veículo {
+    constructor(modelo, ano){
+        this.modelo = modelo;
+        this.ano = ano
+    }
+
+    consumoCombustivel(){
+        let km_L= this.kmRodados/this.litro
+        console.log(`Seu ${this.nome} ${this.modelo} ano ${this.ano} fez ${km_L}Km/L na cidade. `)
+    };
+};
+
+class Carro extends Veículo{
+    constructor(nome, modelo, litro, ano, kmRodados, eficiencia){
+        super(modelo, ano)
+        this.nome = nome;
+        this.litro = litro;
+        this.kmRodados = kmRodados;
+        this.eficiencia = eficiencia;
+    }
+
+    consumoCombustivelCarro(){
+        let km_Litros = (this.kmRodados/this.litro)*this.eficiencia
+        console.log(`Seu ${this.nome} ${this.modelo} ano ${this.ano} fez ${km_Litros}Km/L na cidade. `)
+    }
+}
+let carrinho = new Carro("Wolkswagen", "Polo", 52, "2023", 790, 0.65)
+carrinho.consumoCombustivelCarro();
+console.log("-------------------------------------------------------");
+
+class Moto extends Veículo{
+    constructor(nome, modelo, litro, ano, kmRodados, eficiencia){
+        super(modelo, ano)
+        this.nome = nome;
+        this.litro = litro;
+        this.kmRodados = kmRodados;
+        this.eficiencia= eficiencia;
+}
+consumoCombustilMoto(){
+    let km_Litros = (this.kmRodados/this.litro)*this.eficiencia
+    console.log(`Seu ${this.nome} ${this.modelo} ano ${this.ano} fez ${km_Litros}Km/L na cidade. `)
+};
+};
+
+let motinha = new Moto("Ducati", "Veron", 15, "2024", 200, 0.60);
+motinha.consumoCombustilMoto();
+```
+
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
 
