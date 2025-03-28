@@ -432,6 +432,81 @@ Considere a fórumla de atualização velocidade:
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
 ______
+```javascript
+//pseudocódigo do tempo necessário para fazer um pouso tranquilo
+Função calcularTempoPouso(velocidadeInicial, desaceleracao, tempoMaximo, velocidadeSegura, desaceleracaoMinima):
+    tempo = 0
+    velocidadeAtual = velocidadeInicial
+    
+    # Enquanto a velocidade for maior que a velocidade segura
+    Enquanto velocidadeAtual > velocidadeSegura:
+        # Verifica se o tempo já ultrapassou o limite
+        Se tempo >= tempoMaximo:
+            Retornar "Tempo máximo excedido. Pouso não possível dentro do limite de tempo."
+        
+        # Verifica se a desaceleração é menor que o limite mínimo
+        Se desaceleracao < desaceleracaoMinima:
+            Retornar "Desaceleração mínima atingida. Pouso não seguro."
+        
+        # Atualiza a velocidade da sonda com base no tempo
+        velocidadeAtual = velocidadeInicial - desaceleracao * tempo
+        
+        # Incrementa o tempo em 1 segundo
+        tempo = tempo + 1
+        
+    # Retorna o tempo necessário para atingir a velocidade segura de pouso
+    Retornar "Tempo necessário para o pouso seguro: " + tempo + " segundos."
+
+# Exemplo de uso
+velocidadeInicial = 100  # velocidade inicial em m/s
+desaceleracao = 2        # desaceleração constante em m/s²
+tempoMaximo = 60         # tempo máximo de descida em segundos
+velocidadeSegura = 5     # velocidade segura de pouso em m/s
+desaceleracaoMinima = 0.5 # desaceleração mínima em m/s²
+
+resultado = calcularTempoPouso(velocidadeInicial, desaceleracao, tempoMaximo, velocidadeSegura, desaceleracaoMinima)
+Escrever(resultado)
+
+```
+```javascript
+//código do tempo necessário para fazer um pouso tranquilo
+function calcularTempoPouso(velocidadeInicial, desaceleracao, tempoMaximo, velocidadeSegura, desaceleracaoMinima) {
+    let tempo = 0;
+    let velocidadeAtual = velocidadeInicial;
+    
+    // Enquanto a velocidade for maior que a velocidade segura
+    while (velocidadeAtual > velocidadeSegura) {
+        // Verifica se o tempo já ultrapassou o limite
+        if (tempo >= tempoMaximo) {
+            return "Tempo máximo excedido. Pouso não possível dentro do limite de tempo.";
+        }
+        
+        // Verifica se a desaceleração é menor que o limite mínimo
+        if (desaceleracao < desaceleracaoMinima) {
+            return "Desaceleração mínima atingida. Pouso não seguro.";
+        }
+        
+        // Atualiza a velocidade da sonda com base no tempo
+        velocidadeAtual = velocidadeInicial - desaceleracao * tempo;
+        
+        // Incrementa o tempo em 1 segundo
+        tempo += 1;
+    }
+    
+    // Retorna o tempo necessário para atingir a velocidade segura de pouso
+    return `Tempo necessário para o pouso seguro: ${tempo} segundos.`;
+}
+
+// medidas de velocidade estão em m/s e aceleração estão em m/s² e te,po está em segundos
+let velocidadeInicial = 1000;  
+let desaceleracao = 3.73;       
+let tempoMaximo = 420;         
+let velocidadeSegura = 10;     
+let desaceleracaoMinima = 0.5; 
+
+let resultado = calcularTempoPouso(velocidadeInicial, desaceleracao, tempoMaximo, velocidadeSegura, desaceleracaoMinima);
+console.log(resultado);
+```
 
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
 
